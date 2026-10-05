@@ -1,4 +1,5 @@
 import csv
+import sys
 from pathlib import Path
 
 
@@ -9,5 +10,10 @@ def read_orders(path: Path) -> list[dict[str, str]]:
 
 
 if __name__ == "__main__":
-    orders = read_orders(Path("data") / "orders.csv")
-    print(f"Pedidos leídos: {len(orders)}")
+    try:
+        orders = read_orders(Path("data") / "orders.csv")
+    except FileNotFoundError as error:
+        print(f"Ha fallado: {error}")
+        sys.exit(1)
+    else:
+        print(f"Pedidos leídos: {len(orders)}")
