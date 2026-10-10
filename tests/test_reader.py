@@ -2,9 +2,11 @@ from pathlib import Path
 
 from nebula.reader import read_orders
 
+DATA_DIR = Path(__file__).parent / "data" 
+
 
 def test_read_orders_returns_all_orders_with_content():
-    path = Path(__file__).parent / "data" / "orders_valid.csv"
+    path = DATA_DIR / "orders_valid.csv"
 
     orders = read_orders(path)
 
@@ -13,5 +15,10 @@ def test_read_orders_returns_all_orders_with_content():
     assert orders[0]["quantity"] == "2"
     
 
+def test_read_orders_returns_empty_with_only_headers():
+    path = DATA_DIR / "orders_only_headers.csv"
 
+    orders = read_orders(path)
+
+    assert orders == []
 
