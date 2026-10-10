@@ -22,3 +22,11 @@ def test_read_orders_returns_empty_with_only_headers():
 
     assert orders == []
 
+
+def test_read_orders_maps_values_by_column_name():
+    path = DATA_DIR / "orders_reordered_columns.csv"
+
+    orders = read_orders(path)
+
+    assert orders[0]["quantity"] == "2"
+    assert orders[0]["order_id"] == "1001"
