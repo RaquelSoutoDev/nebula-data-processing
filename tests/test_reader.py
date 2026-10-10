@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from nebula.reader import read_orders
 
 DATA_DIR = Path(__file__).parent / "data" 
@@ -30,3 +32,10 @@ def test_read_orders_maps_values_by_column_name():
 
     assert orders[0]["quantity"] == "2"
     assert orders[0]["order_id"] == "1001"
+
+
+def test_read_orders_raises_when_file_does_not_exist():
+    path = DATA_DIR / "does_not_exist.csv"
+
+    with pytest.raises(FileNotFoundError):
+        read_orders(path)
