@@ -1,0 +1,6 @@
+order_id,order_date,customer_email,product_sku,quantity,unit_price,country
+1004,2026-10-03,pablo@example.com,SKU-007,1,15.00,ES
+1005,2026-13-03,lucia@example.com,SKU-002,2,9.90,ES
+1006,2026-10-03,,SKU-001,1,12.50,FR
+1007,2026-10-04,carlos@example.com,SKU-014,-2,29.90,ES
+1008,2026-10-04,elena@example,SKU-003,1,abc,IT
